@@ -1,0 +1,8 @@
+EMBEDDING_MODEL = "all-MiniLM-L6-v2"
+
+ALPHA = 0.7
+TOP_K = 10
+RATING_THRESHOLD = 3.5
+
+DATA_PATH = "data/"
+MODEL_PATH = "models/"

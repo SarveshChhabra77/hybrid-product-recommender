@@ -8,3 +8,5 @@ streamlit
 joblib
 scipy
 scikit-surprise
+
+-e .
