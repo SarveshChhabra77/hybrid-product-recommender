@@ -108,35 +108,37 @@ Streamlit UI
 
 ## 📂 Project Structure
 
-
+```text
 hybrid-product-recommender/
 │
 ├── src/
-│ ├── components/
-│ │ ├── collaborative.py
-│ │ ├── embeddings.py
-│ │ ├── hybrid.py
-│ │ ├── cold_start.py
-│ │ └── ...
-│ │
-│ ├── pipeline/
-│ │ └── training_pipeline.py
-│ │
-│ ├── api/
-│ │ ├── main.py
-│ │ └── schemas.py
-│ │
-│ └── ui/
-│ └── streamlit_app.py
+│   │
+│   ├── components/                 # Core ML components
+│   │   ├── collaborative.py        # Collaborative Filtering (SVD)
+│   │   ├── embeddings.py           # Transformer-based embeddings
+│   │   ├── hybrid.py               # Hybrid scoring logic
+│   │   ├── cold_start.py           # Cold-start strategies
+│   │   ├── preprocessing.py        # Data cleaning
+│   │   ├── user_profiles.py        # User embedding generation
+│   │   └── evaluation.py           # Precision@K evaluation
+│   │
+│   ├── pipeline/
+│   │   └── training_pipeline.py    # End-to-end training workflow
+│   │
+│   ├── api/
+│   │   ├── main.py                 # FastAPI application
+│   │   └── schemas.py              # Pydantic request/response models
+│   │
+│   └── ui/
+│       └── streamlit_app.py        # Streamlit frontend
 │
-├── models/ # Trained artifacts
-├── data/ # Raw datasets (gitignored)
-├── logs/
-├── requirements.txt
-└── README.md
+├── models/                         # Serialized trained models
+├── data/                           # Raw datasets (gitignored)
+├── logs/                           # Application logs
+│
+├── requirements.txt                # Dependencies
+└── README.md                       # Project documentation
 
-
----
 
 ## ⚙️ Setup & Run Locally
 
