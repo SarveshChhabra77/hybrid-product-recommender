@@ -4,7 +4,7 @@ import requests
 # ==============================
 # 🔑 CONFIG
 # ==============================
-API_URL = "http://127.0.0.1:8000"
+API_URL = "https://hybrid-recommender-api-2yxt.onrender.com/"
 OMDB_API_KEY = "dd385cb"   # your key
 
 st.set_page_config(
