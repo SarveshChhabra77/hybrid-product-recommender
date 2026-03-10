@@ -1,13 +1,49 @@
+# ==============================
+# Python
+# ==============================
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
+
+# ==============================
+# Virtual Environment
+# ==============================
 myvenv/
-hybrid_movie_recommender.egg-info/
+venv/
+
+# ==============================
+# Build Artifacts
+# ==============================
+*.egg-info/
+dist/
+build/
+
+# ==============================
+# Jupyter
+# ==============================
 .ipynb_checkpoints/
-data/
-models/*.pkl
-models/*.joblib
-models/*.bin
-logs/
+
+# ==============================
+# Environment Variables
+# ==============================
 .env
+
+# ==============================
+# Logs
+# ==============================
+logs/
+
+# ==============================
+# Data (raw datasets only)
+# ==============================
+data/*.csv
+data/*.zip
+
+# ==============================
+# Ignore large temp model files (optional)
+# ==============================
+models/*.bin
+models/*.joblib
+
+-e .

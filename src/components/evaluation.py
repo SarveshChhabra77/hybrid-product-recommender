@@ -46,7 +46,7 @@ class Evaluator:
         test_ratings,
         movie_meta,
         user_embeddings,
-        item_embedddings,
+        item_embeddings,
         cf_model,
         cf_component
     ):
@@ -59,7 +59,7 @@ class Evaluator:
             recs = recommender.recommend(
                 user_id=user_id,
                 user_embeddings=user_embeddings,
-                item_embedddings=item_embedddings,
+                item_embeddings=item_embeddings,
                 movie_meta=movie_meta,
                 cf_model=cf_model,
                 cf_component=cf_component,
@@ -95,7 +95,7 @@ class Evaluator:
         test_ratings,
         movie_meta,
         user_embeddings,
-        item_embedddings,
+        item_embeddings,
         cf_model,
         cf_component
         ):
@@ -116,7 +116,7 @@ class Evaluator:
                     test_ratings,
                     movie_meta,
                     user_embeddings,
-                    item_embedddings,
+                    item_embeddings,
                     cf_model,
                     cf_component
                 )

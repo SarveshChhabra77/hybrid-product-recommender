@@ -21,4 +21,3 @@ logging.basicConfig(
 
 logger = logging.getLogger("HybridMovieRecommender")
 
-logger.info("Logging started")

@@ -1,6 +1,5 @@
 from src.exceptions.custom_exception import CustomException
 from src.logging.logger import logger
-from src.constants.config import ALPHA
 from sklearn.metrics.pairwise import cosine_similarity
 from src.components.collaborative import CollaborativeFiltering
 import numpy as np
@@ -8,6 +7,10 @@ import sys
 
 
 class HybridRecommender:
+
+    def __init__(self, alpha=0.7):
+        self.alpha = alpha
+
     """
     Combines collaborative filtering and embedding similarity
     """
@@ -29,14 +32,14 @@ class HybridRecommender:
             raise CustomException(e,sys)
 
 
-    def compute_embeddings_scores(self,user_vector,item_embedddings):
+    def compute_embeddings_scores(self,user_vector,item_embeddings):
         """
         Cosine similarity between user and all items
         """
 
         try:
 
-            sims = cosine_similarity([user_vector],item_embedddings)[0]
+            sims = cosine_similarity([user_vector],item_embeddings)[0]
             return sims
 
         except Exception as e:
@@ -44,7 +47,7 @@ class HybridRecommender:
             raise CustomException(e,sys)
 
 
-    def combine_scores(self,cf_scores,emb_scores,alpha = ALPHA):
+    def combine_scores(self,cf_scores,emb_scores):
         """
         Hybrid weighted scoring
         """
@@ -53,7 +56,7 @@ class HybridRecommender:
             cf_scores = self.minmax_normalize(cf_scores)
             emb_scores = self.minmax_normalize(emb_scores)
 
-            final_scores = alpha * cf_scores + (1 - alpha) * emb_scores
+            final_scores = self.alpha * cf_scores + (1 - self.alpha) * emb_scores
 
             return final_scores
 
@@ -65,7 +68,7 @@ class HybridRecommender:
         self,
         user_id,
         user_embeddings,
-        item_embedddings,
+        item_embeddings,
         movie_meta,
         cf_model,
         cf_component:CollaborativeFiltering,
@@ -82,7 +85,7 @@ class HybridRecommender:
             user_vector = user_embeddings[user_id]
 
             #Embedding similarity
-            emb_scores = self.compute_embeddings_scores(user_vector,item_embedddings)
+            emb_scores = self.compute_embeddings_scores(user_vector,item_embeddings)
 
             # Collabortive filtering scores
             cf_scores = cf_component.get_cf_scores(
@@ -99,9 +102,7 @@ class HybridRecommender:
 
             recs = movie_meta.iloc[top_indices].copy()
 
-            recs['hybrid_scores'] = final_scores[top_indices]
-
-            logger.info('Recommendations generated')
+            recs['hybrid_score'] = final_scores[top_indices]
 
             return recs
 

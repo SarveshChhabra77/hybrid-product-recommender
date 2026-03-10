@@ -22,7 +22,7 @@ class UserProfile:
             logger.info('Building movie index mapping')
 
             movie_index = {
-                mvoie_id : idx
+                movie_ids : idx
                 for idx,movie_ids in enumerate(movie_ids)
             }
 
@@ -45,7 +45,7 @@ class UserProfile:
 
             user_ratings = rating_df[rating_df['userId']==user_id]
 
-            if not user_ratings:
+            if user_ratings.empty:
                 return None
             
             vectors = []

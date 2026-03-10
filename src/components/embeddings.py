@@ -1,7 +1,7 @@
 from src.exceptions.custom_exception import CustomException
 from src.logging.logger import logger
 from src.constants.config import EMBEDDING_MODEL
-from sentence_transformers import SentencesTranformer
+from sentence_transformers import SentenceTransformer
 import pickle
 import os
 import sys
@@ -25,7 +25,7 @@ class EmbeddingGenerator:
             """
             logger.info('Loading embedding model')
 
-            model = SentencesTranformer(self.model_name)
+            model = SentenceTransformer(self.model_name)
 
             logger.info('Embedding model loaded')
 
