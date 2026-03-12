@@ -6,10 +6,12 @@ An end-to-end hybrid recommendation system that combines **Collaborative Filteri
 ---
 
 ## 🚀 Live Demo
-- 🌐 Backend API: _Coming Soon (Render Deployment)_
-- 🎨 Streamlit App: _Coming Soon_
+- 🌐 Backend API: https://hybrid-recommender-api-2yxt.onrender.com
+- 🎨 Streamlit App: https://hybrid-appuct-recommender-sarveshch.streamlit.app/
 
 ---
+
+
 
 ## 🧠 Problem Statement
 
@@ -22,6 +24,19 @@ Modern streaming and e-commerce platforms must:
 - Deliver results through scalable APIs  
 
 This project solves all of the above using a hybrid ML architecture.
+
+---
+
+## 🧠 How It Works
+
+1. **User selects a profile**
+2. Backend loads pre-trained hybrid recommender
+3. Two signals are combined:
+   - Collaborative filtering (user behavior)
+   - Content embeddings (movie metadata)
+4. Hybrid scoring ranks the top movies
+5. Results returned through FastAPI
+6. Streamlit UI renders posters and recommendations
 
 ---
 
@@ -186,6 +201,8 @@ Loads serialized models only
 No raw dataset required
 
 Lightweight & scalable
+
+
 
 💼 Resume Highlights
 
