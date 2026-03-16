@@ -255,6 +255,7 @@ hybrid-product-recommender
 ├── src
 │   │
 │   ├── components
+|   |   ├── data_loader.py
 │   │   ├── collaborative.py
 │   │   ├── embeddings.py
 │   │   ├── hybrid.py
