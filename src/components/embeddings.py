@@ -87,9 +87,11 @@ class EmbeddingGenerator:
             with open(file_path,'wb') as file_obj:
                 pickle.dump(embeddings,file_obj)
 
-            logger.error(f'Embeddings saved at {file_path}')
+            logger.info(f'Embeddings saved at {file_path}')
 
         except Exception as e:
+
+            logger.error(f'Failed to save Embeddings at {file_path}')
 
             raise CustomException(e,sys)
 
