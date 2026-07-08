@@ -1,0 +1,13 @@
+pandas
+numpy<2.0
+scikit-learn
+sentence-transformers
+fastapi
+uvicorn
+streamlit
+joblib
+scipy
+requests
+scikit-surprise
+
+-e .

@@ -29,7 +29,7 @@ setup(
     author_email='sarveshpoker@gmail.com',
     description='Hybrid movie recommendation system using collaborative filtering and transformer embeddings',
     packages=find_packages(),
-    install_requires=get_requirements('requirements.txt')    
+    install_requires=get_requirements('requirements-backend.txt')    
 )
    
    
