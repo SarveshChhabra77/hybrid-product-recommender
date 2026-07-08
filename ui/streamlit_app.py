@@ -4,7 +4,23 @@ import requests
 # ==============================
 # 🔑 CONFIG
 # ==============================
-API_URL = "http://127.0.0.1:8000"
+import os
+
+LOCAL_URL = "http://127.0.0.1:8000"
+RENDER_URL = "https://hybrid-recommender-api-2yxt.onrender.com"
+
+API_URL = os.getenv("API_URL")
+if not API_URL:
+    try:
+        # Auto-detect if local backend is active (with 0.5s timeout)
+        res = requests.get(LOCAL_URL, timeout=0.5)
+        if res.status_code == 200:
+            API_URL = LOCAL_URL
+        else:
+            API_URL = RENDER_URL
+    except Exception:
+        API_URL = RENDER_URL
+
 OMDB_API_KEY = "dd385cb"   # your key
 
 st.set_page_config(
