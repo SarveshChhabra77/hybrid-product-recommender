@@ -307,8 +307,7 @@ hybrid-product-recommender
 │
 ├── app.py                          - Streamlit Cloud deployment entry point proxy
 ├── setup.py                        - Package setup script for editable installation
-├── requirements.txt                - Dependency list for Streamlit Cloud deployment
-├── requirements-ui.txt             - Lightweight dependency list for frontend UI
+├── requirements.txt                - Dependency list for Streamlit Cloud deployment (UI dependencies)
 ├── requirements-backend.txt        - Complete dependency list for training & FastAPI backend
 ├── image.png                       - Dashboard preview header image
 ├── image (2).png                   - Supplementary documentation image
