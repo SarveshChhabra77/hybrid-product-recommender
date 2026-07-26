@@ -247,40 +247,73 @@ Features include:
 ```
 hybrid-product-recommender
 │
+├── .github
+│   └── workflows
+│       └── keep_alive.yml          - GitHub Action to ping Render backend periodically
+│
+├── data
+│   ├── movies.csv                  - MovieLens dataset containing movie IDs, titles, and genres
+│   ├── ratings.csv                 - MovieLens dataset containing user ratings
+│   └── README.md                   - Dataset details and attribution documentation
+│
 ├── docs
 │   └── screenshots
-│       ├── recommendations.png
-│       └── similar_movies.png
-│
-├── src
-│   │
-│   ├── components
-|   |   ├── data_loader.py
-│   │   ├── collaborative.py
-│   │   ├── embeddings.py
-│   │   ├── hybrid.py
-│   │   ├── cold_start.py
-│   │   ├── preprocessing.py
-│   │   ├── user_profiles.py
-│   │   └── evaluation.py
-│   │
-│   ├── pipeline
-│   │   └── training_pipeline.py
-│   │
-│   ├── api
-│   │   ├── main.py
-│   │   └── schemas.py
-│   │
-│   └── ui
-│       └── streamlit_app.py
+│       ├── recommendations.png     - Screenshot of personalized recommendations UI
+│       └── similar_movies.png      - Screenshot of similar movie discovery feature
 │
 ├── models
-├── data
-├── logs
+│   ├── cf_model.pkl                - Trained SVD collaborative filtering model artifact
+│   ├── item_embeddings.pkl         - Transformer semantic embeddings for all movies
+│   ├── user_embeddings.pkl         - Aggregated user preference embedding vectors
+│   ├── movie_meta.pkl              - Processed movie metadata mapping dictionary
+│   ├── movie_ids.pkl               - Array of valid movie identifiers
+│   ├── popular_movies.pkl          - Fallback list of top-rated movies for cold start
+│   └── README.md                   - Information on model artifact storage
 │
-├── image.png
-├── requirements.txt
-└── README.md
+├── notebooks
+│   └── experimentation.ipynb      - EDA, feature engineering, and model training playground
+│
+├── src
+│   ├── api
+│   │   ├── main.py                 - FastAPI application and endpoint definitions
+│   │   └── schemas.py              - Pydantic data schemas for API requests and responses
+│   │
+│   ├── components
+│   │   ├── data_loader.py          - Functions for loading raw MovieLens CSV data
+│   │   ├── preprocessing.py        - Data cleaning, filtering, and transformation logic
+│   │   ├── embeddings.py           - SentenceTransformer embedding generation module
+│   │   ├── collaborative.py        - SVD model wrapper for collaborative filtering
+│   │   ├── hybrid.py               - Recommendation engine combining CF & Content scores
+│   │   ├── cold_start.py           - Popularity and similarity fallback logic
+│   │   ├── user_profiles.py        - Construction of weighted user profile vectors
+│   │   └── evaluation.py           - Metrics calculation (Precision@K, hyperparameter tuning)
+│   │
+│   ├── constants
+│   │   └── config.py               - Central configuration for paths, alpha weight, and hyperparameters
+│   │
+│   ├── exceptions
+│   │   └── custom_exception.py     - Custom exception class for detailed error tracing
+│   │
+│   ├── logging
+│   │   └── logger.py               - Centralized logging setup writing to log files
+│   │
+│   └── pipeline
+│       └── training_pipeline.py    - Pipeline script to run end-to-end model training
+│
+├── ui
+│   └── streamlit_app.py            - Streamlit dashboard interface for recommendations
+│
+├── logs                            - Generated application runtime log files
+│
+├── app.py                          - Streamlit Cloud deployment entry point proxy
+├── setup.py                        - Package setup script for editable installation
+├── requirements.txt                - Dependency list for Streamlit Cloud deployment
+├── requirements-ui.txt             - Lightweight dependency list for frontend UI
+├── requirements-backend.txt        - Complete dependency list for training & FastAPI backend
+├── image.png                       - Dashboard preview header image
+├── image (2).png                   - Supplementary documentation image
+├── .gitignore                      - Specified files and folders ignored by Git
+└── README.md                       - Main project documentation
 ```
 
 ---
@@ -321,7 +354,7 @@ source venv/bin/activate
 ## Install Dependencies
 
 ```
-pip install -r requirements.txt
+pip install -r requirements-backend.txt
 ```
 
 ---
@@ -343,7 +376,7 @@ http://127.0.0.1:8000/docs
 # 🎨 Run Streamlit UI
 
 ```
-streamlit run src/ui/streamlit_app.py
+streamlit run ui/streamlit_app.py
 ```
 
 ---
